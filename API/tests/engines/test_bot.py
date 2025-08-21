@@ -1,5 +1,5 @@
-from API.engines import Bot, TicTacToe
-from API.models.tic_tac_toe import PawnType
+from engines import Bot, TicTacToe
+from models.tic_tac_toe import PawnType
 
 def test_tic_tac_toe():
     game = TicTacToe()

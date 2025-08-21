@@ -1,7 +1,7 @@
 import re
 
-from API.config import GRID_LENGTH, PAWNS_TO_ALIGN
-from API.models.tic_tac_toe import PawnType, EndStatus
+from config import GRID_LENGTH, PAWNS_TO_ALIGN
+from models.tic_tac_toe import PawnType, EndStatus
 
 class TicTacToe:
     """Represent a tic tac toe game"""

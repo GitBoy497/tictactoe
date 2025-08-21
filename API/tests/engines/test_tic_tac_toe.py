@@ -1,7 +1,7 @@
 import pytest
-from API.engines import TicTacToe
-from API.models.tic_tac_toe import PawnType, EndStatus
-from API.config import GRID_LENGTH
+from engines import TicTacToe
+from models.tic_tac_toe import PawnType, EndStatus
+from config import GRID_LENGTH
 
 @pytest.fixture
 def game():

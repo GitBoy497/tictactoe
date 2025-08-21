@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 import uvicorn
 
-from API.routes.tic_tac_toe_routes import router as game_router
+from routes.tic_tac_toe_routes import router as game_router
 
 load_dotenv()
 

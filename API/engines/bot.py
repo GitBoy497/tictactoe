@@ -1,7 +1,7 @@
 import random
 
 from .tic_tac_toe import TicTacToe
-from API.models.tic_tac_toe import PawnType
+from models.tic_tac_toe import PawnType
 
 class Bot:
     """Represent a bot to play game."""

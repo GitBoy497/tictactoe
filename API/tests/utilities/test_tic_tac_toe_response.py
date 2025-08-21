@@ -1,4 +1,4 @@
-from API.utilities.tic_tac_toe_response import success_response, error_response
+from utilities.tic_tac_toe_response import success_response, error_response
 
 def test_success_response():
     board = "XOXOXO   "

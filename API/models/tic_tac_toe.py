@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Dict
 from pydantic import BaseModel, conint, constr
 
-from API.config import GRID_LENGTH
+from config import GRID_LENGTH
 
 grid_str_size = pow(GRID_LENGTH,2)
 

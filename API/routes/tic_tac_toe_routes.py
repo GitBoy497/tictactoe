@@ -2,14 +2,14 @@ from dotenv import dotenv_values
 from fastapi import APIRouter
 from typing import Union
 
-from API.engines import Bot, TicTacToe
-from API.models.tic_tac_toe import (
+from engines import Bot, TicTacToe
+from models.tic_tac_toe import (
     PawnType,
     MoveRequest, 
     SuccessResponseModel, 
     ErrorResponseModel
 )
-from API.utilities.tic_tac_toe_response import success_response, error_response
+from utilities.tic_tac_toe_response import success_response, error_response
 
 router = APIRouter()
 

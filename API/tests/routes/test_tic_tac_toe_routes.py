@@ -1,10 +1,10 @@
 from dotenv import dotenv_values
 from fastapi.testclient import TestClient
 
-from API.main import app
-from API.models.tic_tac_toe import EndStatus
+from main import app
+from models.tic_tac_toe import EndStatus
 
-from API.config import GRID_LENGTH
+from config import GRID_LENGTH
 
 client = TestClient(app)
 

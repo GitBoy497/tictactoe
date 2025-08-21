@@ -47,9 +47,16 @@ The API allows you to :
 For detailed information on each endpoint, including request/response formats refer to the `routes` and `models` folders.
 
 #### 🧪 Test
-To test the service, navigate to the `API/tests` directory and run the following command:
+To test the service, navigate to the `API/tests` directory and run the following command:  
+
+*▶ PowerShell (Windows)*
+```powershell
+$env:PYTHONPATH = ".."
+pytest -vv
 ```
-pytest -v
+*▶ Bash (Linux/macOS)*
+```sh
+PYTHONPATH=.. pytest -vv
 ```
 
 ### 🖥️ Interface
