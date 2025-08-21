@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+#symbol-selector {
+    margin: 20px 0px 20px 0px;
+}
+
+#board {
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid #333;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cell.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#restart-button {
+    margin-top: 20px;
+    display: none;
+}
+
+/* Information status */
+#status-information {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.win {
+    color: green;
+}
+
+.lose, .error {
+    color: red;
+}
+
+.draw {
+    color: orange;
+}
