@@ -30,7 +30,6 @@ def test_valid_place_pawn():
 
     assert response.status_code == 200
     data = response.json()
-    print(response.json())
     assert data["data"]["board"][0] == "X"
     assert data["data"]["played_pawn"] == "X"
     assert data["data"]["winner"] in [None] + [status.value for status in 
@@ -44,7 +43,6 @@ def test_invalid_move_on_other_pawn():
     })
 
     data = response.json()
-    print(data)
     assert data["code"] == 400
     assert data["message"] == "The selected place isn't available !"
 
@@ -63,7 +61,6 @@ def test_invalid_pawn_type():
         "cell_number": 0
     })
     assert response.status_code == 422
-
 
 def test_get_settings():
     response = client.get("/tic_tac_toe/settings")

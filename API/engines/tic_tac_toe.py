@@ -58,37 +58,39 @@ class TicTacToe:
                 return True
         return False
 
+    def _str_to_list_grid(self, game_str: str):
+        """"""
+        return [game_str[
+                row_number*GRID_LENGTH : (row_number+1)*GRID_LENGTH
+                ] for row_number in range(GRID_LENGTH)
+            ]
+
     def _check_columns(self, game_str: str, pawn_type: PawnType):
         """Check if a givien pawn type is algin on columns."""
-        spacing = GRID_LENGTH -1
-
-        pattern = f".{{0,{spacing}}}({re.escape(pawn_type)})"
-        for _ in range(PAWNS_TO_ALIGN - 1):
-            pattern += f".{{{spacing}}}\\1"
-
-        return bool(re.search(pattern, game_str))
+        grid = self._str_to_list_grid(game_str)
+        
+        for column in range(GRID_LENGTH):
+            for row in range(GRID_LENGTH - PAWNS_TO_ALIGN + 1):
+                if all(grid[row+i][column] == pawn_type for i in range(PAWNS_TO_ALIGN)):
+                    return True
+        return False
 
     def _check_diagonals(self, game_str: str, pawn_type: PawnType):
         """Check if a givien pawn type is algin on diagonals."""
-        # X...X...X (3x3)
-        left_to_right_pattern = (
-            f"({re.escape(pawn_type)})"
-            + "".join([
-                f".{{{GRID_LENGTH}}}\\1"
-                for _ in range(PAWNS_TO_ALIGN - 1)
-            ])
-        )
+        grid = self._str_to_list_grid(game_str)
 
-        # ..X.X.X.. (3x3)
-        right_to_left_pattern = (
-            f".{{{GRID_LENGTH-1}}}({re.escape(pawn_type)})"
-            + "".join([
-                f".{{{GRID_LENGTH-2}}}\\1"
-                for _ in range(PAWNS_TO_ALIGN - 1)
-            ])
-        )
+        availables_indexes_start = GRID_LENGTH - PAWNS_TO_ALIGN + 1
 
-        return (
-            bool(re.search(left_to_right_pattern, game_str)) or 
-            bool(re.search(right_to_left_pattern, game_str))
-        )
+        # left to right diagonals
+        for row in range(availables_indexes_start):
+            for column in range(availables_indexes_start):
+                if all(grid[row+i][column+i] == pawn_type for i in range(PAWNS_TO_ALIGN)):
+                    return True
+
+        # right to left diagonals
+        for r in range(availables_indexes_start):
+            for c in range(PAWNS_TO_ALIGN - 1, GRID_LENGTH):
+                if all(grid[r+i][c-i] == pawn_type for i in range(PAWNS_TO_ALIGN)):
+                    return True
+
+        return False

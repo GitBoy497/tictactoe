@@ -13,7 +13,7 @@ class PawnType(str, Enum):
 class MoveRequest(BaseModel):
     game_str: constr(min_length=grid_str_size, max_length=grid_str_size)
     pawn_type: PawnType
-    cell_number: conint(ge=0, le=GRID_LENGTH-1)
+    cell_number: conint(ge=0, le=grid_str_size-1)
 
 class EndStatus(str, Enum):
     DRAW = "Draw"
