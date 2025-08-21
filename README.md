@@ -2,11 +2,11 @@
 microservice-based project aiming to build a flexible and extensible Tic Tac Toe game, with potential to evolve into a multi-game platform.
 
 ## 📖 Table of Contents
-- [Game Rules](#-tic-tac-toe-rules)
-- [Architecture Overview](#-services)
-    - [API Reference](#-api)
+- [Tic Tac Toe rules](#-tic-tac-toe-rules)
+- [Architecture overview](#-services)
+    - [API](#-api)
     - [Interface](#️-interface)
-- [Getting Started](#)
+- [Getting Started](#-getting-started)
 
 ## 🎮 Tic Tac Toe Rules
 
@@ -46,6 +46,20 @@ The API allows you to :
 
 For detailed information on each endpoint, including request/response formats refer to the `routes` and `models` folders.
 
+#### ⚙️ Configuration
+You can customize the Tic Tac Toe game by adjusting parameters in the `config.py` file.
+
+- `GRID_LENGTH`  
+  Determines the size of the game board.  
+  - Example: `3` creates a 3x3 grid (classic Tic Tac Toe).  
+  - Larger values like `5` create a 5x5 grid for extended gameplay.
+
+- `PAWNS_TO_ALIGN`  
+  Sets how many identical symbols must be aligned to win.  
+  - Example: `3` means a player needs 3 in a row to win.  
+  - You can increase this value for more challenging matches (e.g., `4` or `5`).
+  - Always needs to be <= GRID_LENGTH
+
 #### 🧪 Test
 To test the service, navigate to the `API/tests` directory and run the following command:  
 
@@ -60,7 +74,18 @@ PYTHONPATH=.. pytest -vv
 ```
 
 ### 🖥️ Interface
-> _To be documented_: current UI, future plans (CLI, web, mobile, etc.)
+The provided interface is simple and easy to use. Feel free to customize it or create a new one that better suits your needs.
+
+To access the interface, open the file named `index.html`. Make sure the API is running beforehand—otherwise, you'll need to refresh the page after starting the API, as explained in the **Getting Started** section.
+
+Interaction is entirely mouse-based, so no keyboard input is required.
+
+#### 🖼️ Previews
+Here are some previews of the interface:
+
+![Aperçu de l'interface](./assets/interface-preview-1.png)
+
+![Aperçu de l'interface](./assets/interface-preview-2.png)
 
 ## 🚀 Getting Started
 In this section, you will find all you need to run the API smoothly and start playing with ease.
@@ -71,7 +96,7 @@ In this section, you will find all you need to run the API smoothly and start pl
 
 ### 📦 Installation
 
-Navigate to the root directory of the project and install dependencies:
+Navigate to the `API` directory of the project and install dependencies:
 
 ```bash
 pip install -r requirements.txt
