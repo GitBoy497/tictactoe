@@ -5,6 +5,7 @@ from typing import Union
 from engines import Bot, TicTacToe
 from models.tic_tac_toe import (
     PawnType,
+    NewGameRequest,
     MoveRequest, 
     SuccessResponseModel, 
     ErrorResponseModel
@@ -16,11 +17,18 @@ router = APIRouter()
 bot = Bot()
 tic_tac_toe = TicTacToe ()
 
-@router.get("/new_game", response_model=SuccessResponseModel)
-def create_game():
+@router.post("/new_game", response_model=SuccessResponseModel)
+def create_game(new_game: NewGameRequest):
     """Create a tic tac toe game."""
+    game_str = tic_tac_toe.create_game() 
+    if new_game.choosen_pawn_type == PawnType.O :
+        game_str = bot.play_tic_tac_toe(
+                        tic_tac_toe, 
+                        game_str, 
+                        PawnType.X
+                        )
     return success_response(
-            tic_tac_toe.create_game(), 
+            game_str, 
             None, 
             None
         )

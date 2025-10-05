@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import Dict
 from pydantic import BaseModel, conint, constr
 
 from config import GRID_LENGTH
@@ -10,10 +9,13 @@ class PawnType(str, Enum):
     X = "X"
     O = "O"
 
+class NewGameRequest(BaseModel):
+    choosen_pawn_type : PawnType
+
 class MoveRequest(BaseModel):
-    game_str: constr(min_length=grid_str_size, max_length=grid_str_size)
+    game_str: constr(min_length=grid_str_size, max_length=grid_str_size) # constraint
     pawn_type: PawnType
-    cell_number: conint(ge=0, le=grid_str_size-1)
+    cell_number: conint(ge=0, le=grid_str_size-1) #constraint
 
 class EndStatus(str, Enum):
     DRAW = "Draw"

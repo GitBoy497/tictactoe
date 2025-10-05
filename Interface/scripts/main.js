@@ -15,7 +15,7 @@ function selectSymbol(symbol){
     document.getElementById('O-selector').style.display = "none";
     document.getElementById('symbol-information').innerText = `You are the ${playerSymbol}`;
 
-    fetchNewGame();
+    fetchNewGame(symbol);
 }
 
 function restartGame() {
@@ -30,9 +30,17 @@ function restartGame() {
     document.getElementById('O-selector').style.display = "inline-block";
 }
 
-async function fetchNewGame() {
+async function fetchNewGame(choosen_pawn_type) {
   try {
-    const response = await fetch(getURLEndpoint('tic_tac_toe/new_game'));
+    const response = await fetch(getURLEndpoint('tic_tac_toe/new_game'), {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        choosen_pawn_type: choosen_pawn_type,
+    })
+});
     const data = await response.json();
 
     document.getElementById('restart-button').style.display = "inline-block";
@@ -43,6 +51,15 @@ async function fetchNewGame() {
   } catch (error) {
     console.error("Failed to fetch new game:", error);
   }
+}
+
+function renderPawns(pawn_type){
+    switch (pawn_type){
+        case 'X':
+            return '🚀';
+        case 'O':
+            return '⚙️';
+    }
 }
 
 function renderBoard(boardString) {
@@ -59,7 +76,7 @@ function renderBoard(boardString) {
     cells.forEach((value, index) => {
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        cell.textContent = value.trim();
+        cell.textContent = renderPawns(value.trim());
         cell.dataset.index = index;
         cell.addEventListener('click', () => handleClick(index));
         board.appendChild(cell);
