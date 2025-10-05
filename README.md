@@ -106,7 +106,7 @@ pip install -r requirements.txt
 
 Start the server using **Uvicorn**:
 ```sh
-uvicorn main.py
+uvicorn "main:app"
 ```
 The API will be accessible locally at `http://127.0.0.1:8000` by default.
 
@@ -115,6 +115,23 @@ The API will be accessible locally at `http://127.0.0.1:8000` by default.
 Use the provided interface or connect your own frontend to interact with the API.
 
 Enjoy ! 😉
+
+## Improvements
+
+- automation
+  - Create a Makefile
+  - Create an initialization script for the project
+  - Containerize services (Docker ?)
+- frontend :
+  - Be able to personnalize background color
+  - Be able to change the pawns showing (e.g. emojis instead of 'X' and 'O')
+    > See `renderPawns` function in `Interface/scripts/main.js`
+- API :
+  - Improve bot playing (e.g. see if already pawns align or block player)
+  - Add a new game : Mastermind
+- database :
+  - Add a database service to be able to save games and user infos
+
 
 ## Contributors
 <a href="https://github.com/GitBoy497"><img src="https://avatars.githubusercontent.com/u/80398114?v=4" title="FuriousSmasher" width="50" height="50"></a>
