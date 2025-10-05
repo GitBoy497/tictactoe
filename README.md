@@ -119,7 +119,6 @@ Enjoy ! 😉
 ## Improvements
 
 - automation
-  - Create a Makefile
   - Create an initialization script for the project
   - Containerize services (Docker ?)
 - frontend :
@@ -127,7 +126,9 @@ Enjoy ! 😉
   - Be able to change the pawns showing (e.g. emojis instead of 'X' and 'O')
     > See `renderPawns` function in `Interface/scripts/main.js`
 - API :
-  - Improve bot playing (e.g. see if already pawns align or block player)
+  - Add README for API structure description
+  - Add Makefile for automation
+  - Improve bot playing when `GRID_LENGTH` != `PAWNS_TO_ALIGN`
   - Add a new game : Mastermind
 - database :
   - Add a database service to be able to save games and user infos
