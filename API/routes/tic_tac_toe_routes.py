@@ -2,7 +2,8 @@ from dotenv import dotenv_values
 from fastapi import APIRouter
 from typing import Union
 
-from engines import Bot, TicTacToe
+from bots import TicTacToeBot
+from engines import TicTacToe
 from models.tic_tac_toe import (
     PawnType,
     NewGameRequest,
@@ -14,7 +15,7 @@ from utilities.tic_tac_toe_response import success_response, error_response
 
 router = APIRouter()
 
-bot = Bot()
+bot = TicTacToeBot()
 tic_tac_toe = TicTacToe ()
 
 @router.post("/new_game", response_model=SuccessResponseModel)
@@ -22,7 +23,7 @@ def create_game(new_game: NewGameRequest):
     """Create a tic tac toe game."""
     game_str = tic_tac_toe.create_game() 
     if new_game.choosen_pawn_type == PawnType.O :
-        game_str = bot.play_tic_tac_toe(
+        game_str = bot.play(
                         tic_tac_toe, 
                         game_str, 
                         PawnType.X
@@ -46,7 +47,7 @@ def play_turn(move: MoveRequest):
 
         if tic_tac_toe.get_game_status(game_str) is None :
             bot_pawn_type = PawnType.X if move.pawn_type == PawnType.O else PawnType.O
-            game_str = bot.play_tic_tac_toe(
+            game_str = bot.play(
                 tic_tac_toe, 
                 game_str, 
                 bot_pawn_type

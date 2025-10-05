@@ -1,5 +1,3 @@
-import re
-
 from config import GRID_LENGTH, PAWNS_TO_ALIGN
 from models.tic_tac_toe import PawnType, EndStatus
 
@@ -58,7 +56,7 @@ class TicTacToe:
                 return True
         return False
 
-    def _str_to_list_grid(self, game_str: str):
+    def str_to_list_grid(self, game_str: str):
         """"""
         return [game_str[
                 row_number*GRID_LENGTH : (row_number+1)*GRID_LENGTH
@@ -67,7 +65,7 @@ class TicTacToe:
 
     def _check_columns(self, game_str: str, pawn_type: PawnType):
         """Check if a givien pawn type is algin on columns."""
-        grid = self._str_to_list_grid(game_str)
+        grid = self.str_to_list_grid(game_str)
         
         for column in range(GRID_LENGTH):
             for row in range(GRID_LENGTH - PAWNS_TO_ALIGN + 1):
@@ -77,7 +75,7 @@ class TicTacToe:
 
     def _check_diagonals(self, game_str: str, pawn_type: PawnType):
         """Check if a givien pawn type is algin on diagonals."""
-        grid = self._str_to_list_grid(game_str)
+        grid = self.str_to_list_grid(game_str)
 
         availables_indexes_start = GRID_LENGTH - PAWNS_TO_ALIGN + 1
 
